@@ -5,16 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WebP Converter | Pro Toolss</title>
 
+    <!-- SEO Meta -->
+    <meta name="description" content="Convert WebP images to JPG or PNG instantly. Free online WebP converter with batch processing and quality control." />
+    <link rel="canonical" href="https://www.protoolss.online/webp-converter" />
+    <meta name="theme-color" content="#007BFF" />
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://i.ibb.co/FkJPMZ8r/Chat-GPT-Image-Jun-18-2026-07-58-22-AM.png" />
 
-    <!-- Font Awesome for Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Google Fonts: Poppins & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <style>
         /* ============================================================
-                   CSS VARIABLES (only light theme, no dark)
-                   ============================================================ */
+           CSS VARIABLES
+           ============================================================ */
         :root {
             --bg-primary: #f8fafc;
             --bg-secondary: #ffffff;
@@ -38,18 +48,14 @@
             --success: #16a34a;
             --danger: #dc2626;
             --warning: #f59e0b;
-            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            --nav-bg: rgba(255, 255, 255, 0.97);
-            --footer-bg: #0b1426;
-            --footer-text: #94a3b8;
-            --highlight: #facc15;
-            --scrollbar-track: #f1f1f1;
-            --scrollbar-thumb: #c1c7d0;
+            --font: 'Inter', system-ui, -apple-system, sans-serif;
+            --nav-h: 75px;
+            --footer-height: 70px;
         }
 
         /* ============================================================
-                   RESET & BASE
-                   ============================================================ */
+           RESET & BASE
+           ============================================================ */
         * {
             margin: 0;
             padding: 0;
@@ -67,20 +73,20 @@
             font-family: var(--font);
             background: var(--bg-primary);
             color: var(--text-primary);
-            padding-top: 75px;
-            transition: background var(--transition), color var(--transition);
+            padding-top: 80px;
+            padding-bottom: var(--footer-height); /* space for fixed footer */
+            overflow-x: hidden;
         }
 
-        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--scrollbar-track);
+            background: #f1f1f1;
         }
         ::-webkit-scrollbar-thumb {
-            background: var(--scrollbar-thumb);
+            background: #c1c7d0;
             border-radius: 10px;
         }
 
@@ -100,79 +106,198 @@
         }
 
         /* ============================================================
-                   NAVBAR  (no theme toggle)
-                   ============================================================ */
-        .new-nav {
+           UNIFIED NAVBAR (from Age Calculator)
+           ============================================================ */
+        nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 999;
-            background: var(--nav-bg);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, .05);
-            padding: 12px 28px;
+            padding: 14px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            box-shadow: 0 1px 20px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+            font-family: 'Poppins', sans-serif;
+        }
+        nav.scrolled {
+            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.06);
+        }
+        .nav-container {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            transition: background var(--transition);
-            border-bottom: 1px solid var(--border-color);
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            flex-wrap: nowrap;
         }
-
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            min-width: 0;
+            justify-content: space-between;
+        }
+        .hamburger {
+            display: block !important;
+            font-size: 1.6rem;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 6px 8px;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            line-height: 1;
+            flex-shrink: 0;
+            order: 2;
+            margin-left: auto;
+        }
+        .hamburger:hover {
+            color: #cc0000;
+            background: rgba(204, 0, 0, 0.06);
+        }
         .logo {
-            font-size: 30px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-        .logo-blue {
-            color: var(--accent);
-        }
-        .logo-orange {
-            color: var(--orange);
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .home-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 4px 8px;
-            border-radius: 10px;
-            transition: background var(--transition);
-        }
-        .home-btn:hover {
-            background: var(--bg-hover);
-        }
-        .home-btn .lines {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        .home-btn .lines span {
-            width: 24px;
-            height: 3px;
-            background: var(--text-primary);
-            border-radius: 10px;
-            transition: background var(--transition);
-        }
-        .home-btn .label {
-            font-size: 9px;
+            font-size: 1.5rem;
             font-weight: 700;
-            color: var(--text-secondary);
-            margin-top: 3px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 1;
+            min-width: 0;
+            margin-right: auto;
+        }
+        .logo .pro {
+            color: #cc0000;
+        }
+        .logo .toolss {
+            color: #1a2a6c;
+        }
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .nav-center {
+            display: none !important;
+        }
+        .nav-links {
+            display: none !important;
+        }
+        .nav-links-mobile {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            gap: 0.6rem;
+            padding: 16px 20px 12px;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+            margin-top: 10px;
+            background: rgba(255, 255, 255, 0.98);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-radius: 0 0 16px 16px;
+        }
+        .nav-links-mobile.show {
+            display: flex;
+        }
+        .nav-links-mobile a {
+            padding: 8px 0;
+            font-size: 0.95rem;
+            width: 100%;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+            white-space: normal;
+            color: #444;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+        .nav-links-mobile a:last-child {
+            border-bottom: none;
+        }
+        .nav-links-mobile a i {
+            width: 24px;
+            text-align: center;
+            flex-shrink: 0;
+            color: #cc0000;
+        }
+        .nav-links-mobile a.active {
+            color: #cc0000;
+        }
+        .nav-links-mobile a:hover {
+            color: #cc0000;
+            padding-left: 8px;
         }
 
         /* ============================================================
-                   MAIN CONTENT
-                   ============================================================ */
+           UNIFIED FOOTER (FIXED AT BOTTOM)
+           ============================================================ */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 30;
+            height: var(--footer-height);
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            color: #e0e0e0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+            flex-shrink: 0;
+        }
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+        .footer-powered {
+            font-size: 1rem;
+            color: #aaaaaa;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+        .footer-powered a {
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .footer-powered a:hover {
+            color: #ff4444;
+            text-decoration: underline;
+        }
+        .footer-powered i {
+            color: #ff6b6b;
+            margin: 0 6px;
+        }
+
+        /* ============================================================
+           MAIN CONTENT
+           ============================================================ */
         main {
             flex: 1;
             padding: 30px 20px 40px;
@@ -181,7 +306,7 @@
             width: 100%;
         }
 
-        /* --- Hero --- */
+        /* Hero */
         .hero {
             text-align: center;
             margin-bottom: 40px;
@@ -204,7 +329,7 @@
             margin: 0 auto;
         }
 
-        /* --- Upload Zone --- */
+        /* Upload Zone */
         .upload-zone {
             background: var(--bg-card);
             border: 2.5px dashed var(--border-color);
@@ -264,7 +389,7 @@
             height: 100%;
         }
 
-        /* --- Settings Panel --- */
+        /* Settings Panel */
         .settings-panel {
             display: flex;
             flex-wrap: wrap;
@@ -328,7 +453,7 @@
             text-align: center;
         }
 
-        /* --- File List --- */
+        /* File List */
         .file-list {
             margin-top: 30px;
             display: flex;
@@ -491,7 +616,7 @@
             color: var(--danger);
         }
 
-        /* --- Download All --- */
+        /* Download All */
         .download-all-wrap {
             margin-top: 28px;
             display: flex;
@@ -522,7 +647,7 @@
             box-shadow: none;
         }
 
-        /* --- Empty state --- */
+        /* Empty state */
         .empty-state {
             text-align: center;
             padding: 50px 20px;
@@ -537,37 +662,7 @@
             font-size: 16px;
         }
 
-        /* ============================================================
-                   FOOTER  (from provided code)
-                   ============================================================ */
-        footer {
-            background: var(--footer-bg);
-            color: white;
-            height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0 20px;
-            margin-top: 20px;
-            flex-shrink: 0;
-        }
-        .design-footer {
-            color: var(--footer-text);
-            font-size: 14px;
-        }
-        .highlight {
-            color: var(--highlight);
-            font-weight: 700;
-            text-decoration: underline;
-            transition: color var(--transition);
-        }
-        .highlight:hover {
-            color: #fde047;
-        }
-
-        /* ============================================================
-                   ANIMATIONS
-                   ============================================================ */
+        /* Animations */
         @keyframes fadeUp {
             from {
                 opacity: 0;
@@ -601,28 +696,86 @@
             animation: pulse 1s infinite;
         }
 
-        /* ============================================================
-                   RESPONSIVE
-                   ============================================================ */
-        @media (max-width: 1024px) {
-            .settings-panel {
-                padding: 16px 20px;
-                gap: 14px;
-            }
+        /* Toast */
+        .toast-msg {
+            position: fixed;
+            bottom: 90px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #3b82f6;
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+            z-index: 9999;
+            max-width: 90vw;
+            text-align: center;
+            animation: fadeUp 0.3s ease both;
+            font-family: var(--font);
+        }
+        .toast-msg.success {
+            background: #16a34a;
+        }
+        .toast-msg.error {
+            background: #dc2626;
+        }
+        .toast-msg.warning {
+            background: #f59e0b;
+        }
+        .toast-msg.info {
+            background: #3b82f6;
         }
 
+        /* Responsive */
         @media (max-width: 768px) {
             body {
                 padding-top: 68px;
+                padding-bottom: 60px; /* adjust for smaller footer */
             }
-            .new-nav {
-                padding: 10px 18px;
+            :root {
+                --footer-height: 60px;
+            }
+            nav {
+                padding: 10px 0;
+            }
+            .nav-container {
+                padding: 0 14px;
+            }
+            .nav-left {
+                gap: 8px;
+            }
+            .hamburger {
+                font-size: 1.5rem;
+                padding: 4px 6px;
             }
             .logo {
-                font-size: 24px;
+                font-size: 1.2rem;
+                gap: 6px;
             }
-            .nav-actions {
-                gap: 10px;
+            .logo-icon {
+                width: 28px;
+                height: 28px;
+            }
+            .nav-links-mobile {
+                padding: 12px 16px 10px;
+                gap: 0.4rem;
+            }
+            .nav-links-mobile a {
+                font-size: 0.85rem;
+                padding: 6px 0;
+            }
+            .nav-links-mobile a i {
+                width: 20px;
+                font-size: 0.8rem;
+            }
+            footer {
+                height: 60px;
+                padding: 0 16px;
+            }
+            .footer-powered {
+                font-size: 0.9rem;
             }
             main {
                 padding: 20px 14px 30px;
@@ -684,30 +837,54 @@
                 justify-content: center;
                 padding: 14px 20px;
             }
-            footer {
-                height: 60px;
-                font-size: 13px;
-                position: relative;
-                margin-top: 30px;
-            }
-            .design-footer {
-                font-size: 13px;
-            }
         }
-
         @media (max-width: 480px) {
+            body {
+                padding-top: 62px;
+                padding-bottom: 55px;
+            }
+            :root {
+                --footer-height: 55px;
+            }
+            nav {
+                padding: 8px 0;
+            }
+            .nav-container {
+                padding: 0 12px;
+            }
+            .nav-left {
+                gap: 6px;
+            }
+            .hamburger {
+                font-size: 1.3rem;
+                padding: 3px 5px;
+            }
             .logo {
-                font-size: 20px;
+                font-size: 1rem;
+                gap: 4px;
             }
-            .new-nav {
-                padding: 8px 14px;
+            .logo-icon {
+                width: 24px;
+                height: 24px;
             }
-            .home-btn .lines span {
+            .nav-links-mobile {
+                padding: 12px 16px 10px;
+                gap: 0.4rem;
+            }
+            .nav-links-mobile a {
+                font-size: 0.85rem;
+                padding: 6px 0;
+            }
+            .nav-links-mobile a i {
                 width: 20px;
-                height: 2.5px;
+                font-size: 0.8rem;
             }
-            .home-btn .label {
-                font-size: 8px;
+            footer {
+                height: 55px;
+                padding: 0 12px;
+            }
+            .footer-powered {
+                font-size: 0.8rem;
             }
             .file-info .name {
                 font-size: 14px;
@@ -722,8 +899,24 @@
                 width: 80px;
             }
         }
+        @media (min-width: 769px) {
+            .nav-left {
+                flex: 1;
+                justify-content: space-between;
+            }
+            .hamburger {
+                display: block !important;
+                font-size: 1.8rem;
+                padding: 8px 12px;
+            }
+            .nav-links-mobile {
+                max-width: 300px;
+                right: 0;
+                left: auto;
+                border-radius: 0 0 16px 16px;
+            }
+        }
 
-        /* Utility to hide scrollbar on number input */
         input[type="number"]::-webkit-inner-spin-button,
         input[type="number"]::-webkit-outer-spin-button {
             -webkit-appearance: none;
@@ -732,57 +925,33 @@
         input[type="number"] {
             -moz-appearance: textfield;
         }
-
-        /* Toast styling */
-        .toast-msg {
-            position: fixed;
-            bottom: 90px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #3b82f6;
-            color: #fff;
-            padding: 14px 28px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 15px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-            z-index: 9999;
-            max-width: 90vw;
-            text-align: center;
-            animation: fadeUp 0.3s ease both;
-            font-family: var(--font);
-        }
-        .toast-msg.success { background: #16a34a; }
-        .toast-msg.error { background: #dc2626; }
-        .toast-msg.warning { background: #f59e0b; }
-        .toast-msg.info { background: #3b82f6; }
     </style>
 </head>
 <body>
 
     <!-- ============================================================
-    NAVBAR (no theme toggle)
+       UNIFIED NAVBAR
     ============================================================ -->
-    <nav class="new-nav">
-        <div class="logo">
-            <span class="logo-blue">Pro</span>
-            <span class="logo-orange">Toolss</span>
-        </div>
-
-        <div class="nav-actions">
-            <button id="homeBtn" class="home-btn" aria-label="Home">
-                <div class="lines">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <span class="label">Home</span>
-            </button>
+    <nav id="mainNav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="https://www.protoolss.online" class="logo">
+                    <img src="https://i.ibb.co/FkJPMZ8r/Chat-GPT-Image-Jun-18-2026-07-58-22-AM.png" alt="Pro Toolss Logo" class="logo-icon" />
+                    <span class="pro">Pro</span><span class="toolss">Toolss</span>
+                </a>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div class="nav-center" style="display:none !important;"></div>
+            <div class="nav-links-mobile" id="navLinksMobile">
+                <a href="https://www.protoolss.online" class="active"><i class="fas fa-home"></i> Home</a>
+            </div>
         </div>
     </nav>
 
     <!-- ============================================================
-    MAIN CONTENT
+       MAIN CONTENT
     ============================================================ -->
     <main>
 
@@ -845,27 +1014,69 @@
     </main>
 
     <!-- ============================================================
-    FOOTER
+       UNIFIED FOOTER (FIXED)
     ============================================================ -->
     <footer>
-        <div class="design-footer">
-            Design by
-            <a href="https://www.protoolss.online" target="_blank" class="highlight">
-                Pro Toolss
-            </a>
+        <div class="footer-content">
+            <div class="footer-powered">
+                <i class=""></i> Powered by
+                <a href="https://www.protoolss.online" target="_blank" rel="noopener noreferrer">www.protoolss.online</a>
+                <i class="" style="color: #ff6b6b;"></i>
+            </div>
         </div>
     </footer>
 
     <!-- ============================================================
-    JAVASCRIPT — all logic (dark mode removed)
+       SCRIPTS
     ============================================================ -->
     <script>
+        // ============================================================
+        // NAVBAR SCRIPTS (Hamburger, scroll)
+        // ============================================================
+        (function() {
+            const nav = document.getElementById('mainNav');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) nav.classList.add('scrolled');
+                else nav.classList.remove('scrolled');
+            });
+
+            const hamburger = document.getElementById('hamburgerBtn');
+            const navLinksMobile = document.getElementById('navLinksMobile');
+
+            hamburger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                navLinksMobile.classList.toggle('show');
+                const icon = this.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+
+            document.querySelectorAll('#navLinksMobile a').forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinksMobile.classList.remove('show');
+                    const icon = hamburger.querySelector('i');
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                });
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('nav') && navLinksMobile.classList.contains('show')) {
+                    navLinksMobile.classList.remove('show');
+                    const icon = hamburger.querySelector('i');
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            });
+        })();
+
+        // ============================================================
+        // WEBP CONVERTER LOGIC
+        // ============================================================
         (function() {
             'use strict';
 
-            // ============================================================
             // DOM refs
-            // ============================================================
             const fileInput = document.getElementById('fileInput');
             const uploadZone = document.getElementById('uploadZone');
             const fileList = document.getElementById('fileList');
@@ -877,19 +1088,13 @@
             const convertAllBtn = document.getElementById('convertAllBtn');
             const downloadAllBtn = document.getElementById('downloadAllBtn');
             const downloadAllWrap = document.getElementById('downloadAllWrap');
-            const homeBtn = document.getElementById('homeBtn');
 
-            // ============================================================
             // State
-            // ============================================================
-            const files = []; // { id, file, name, size, webpUrl, img, width, height, status, convertedBlob, convertedSize, error }
-
+            const files = [];
             let idCounter = 0;
             let isConverting = false;
 
-            // ============================================================
             // Helpers
-            // ============================================================
             function formatSize(bytes) {
                 if (bytes === 0) return '0 B';
                 const k = 1024;
@@ -897,10 +1102,6 @@
                 const i = Math.floor(Math.log(bytes) / Math.log(k));
                 const val = (bytes / Math.pow(k, i)).toFixed(1);
                 return val + ' ' + sizes[i];
-            }
-
-            function getFileExtension(filename) {
-                return filename.split('.').pop().toLowerCase();
             }
 
             function getBaseName(filename) {
@@ -912,36 +1113,22 @@
                 return file.type === 'image/webp' || /\.webp$/i.test(file.name);
             }
 
-            // ============================================================
-            // Home button
-            // ============================================================
-            homeBtn.addEventListener('click', function() {
-                window.location.href = 'https://www.protoolss.online';
-            });
-
-            // ============================================================
             // Quality slider
-            // ============================================================
             qualityRange.addEventListener('input', function() {
                 qualityValue.textContent = this.value + '%';
             });
 
-            // Toggle quality slider visibility based on format
             formatSelect.addEventListener('change', function() {
                 if (this.value === 'jpg') {
                     qualityGroup.style.display = 'flex';
                 } else {
                     qualityGroup.style.display = 'none';
                 }
-                // re-render file cards to update download buttons (format changed)
                 renderFileList();
             });
-            // init: show quality for JPG (default)
             qualityGroup.style.display = 'flex';
 
-            // ============================================================
             // File upload
-            // ============================================================
             function handleFiles(selectedFiles) {
                 const webpFiles = Array.from(selectedFiles).filter(isWebPFile);
                 if (webpFiles.length === 0) {
@@ -949,7 +1136,6 @@
                     return;
                 }
 
-                // filter out duplicates by name + size
                 const existingNames = new Set(files.map(f => f.name + '|' + f.size));
                 const newFiles = webpFiles.filter(f => !existingNames.has(f.name + '|' + f.size));
 
@@ -969,7 +1155,7 @@
                         img: null,
                         width: 0,
                         height: 0,
-                        status: 'idle', // idle | loading | loaded | converting | done | error
+                        status: 'idle',
                         convertedBlob: null,
                         convertedSize: 0,
                         error: null,
@@ -1007,9 +1193,7 @@
                 img.src = url;
             }
 
-            // ============================================================
-            // Conversion logic
-            // ============================================================
+            // Conversion
             function convertFile(entry) {
                 return new Promise((resolve) => {
                     if (entry.status === 'done') {
@@ -1033,7 +1217,6 @@
                     const w = entry.width;
                     const h = entry.height;
 
-                    // Limit canvas size to avoid memory issues (max 4096px)
                     let maxDim = 4096;
                     let drawW = w,
                         drawH = h;
@@ -1048,8 +1231,6 @@
 
                     canvas.width = drawW;
                     canvas.height = drawH;
-
-                    // Draw image with orientation preserved
                     ctx.drawImage(entry.img, 0, 0, drawW, drawH);
 
                     let mimeType = format === 'png' ? 'image/png' : 'image/jpeg';
@@ -1065,7 +1246,6 @@
                             entry.status = 'error';
                             entry.error = 'Conversion failed.';
                         }
-                        // Clean up canvas
                         canvas.width = 0;
                         canvas.height = 0;
                         renderFileList();
@@ -1107,9 +1287,7 @@
                 }
             }
 
-            // ============================================================
             // Download
-            // ============================================================
             function downloadFile(entry) {
                 if (entry.status !== 'done' || !entry.convertedBlob) {
                     showToast('File not ready for download.', 'warning');
@@ -1135,7 +1313,6 @@
                     showToast('No converted files to download.', 'warning');
                     return;
                 }
-                // Download one by one with small delay
                 done.forEach((entry, index) => {
                     setTimeout(() => {
                         downloadFile(entry);
@@ -1144,9 +1321,7 @@
                 showToast('Downloading ' + done.length + ' file(s)...', 'success');
             }
 
-            // ============================================================
             // Remove file
-            // ============================================================
             function removeFile(id) {
                 const idx = files.findIndex(f => f.id === id);
                 if (idx === -1) return;
@@ -1165,11 +1340,8 @@
                 }
             }
 
-            // ============================================================
-            // Render file list
-            // ============================================================
+            // Render
             function renderFileList() {
-                // Remove all file cards but keep empty state
                 const cards = fileList.querySelectorAll('.file-card');
                 cards.forEach(c => c.remove());
 
@@ -1248,7 +1420,7 @@
                     infoDiv.appendChild(nameSpan);
                     infoDiv.appendChild(metaDiv);
 
-                    // Progress bar
+                    // Progress
                     const progressWrap = document.createElement('div');
                     progressWrap.className = 'file-progress';
                     const bar = document.createElement('div');
@@ -1270,7 +1442,6 @@
                     const actionsDiv = document.createElement('div');
                     actionsDiv.className = 'file-actions';
 
-                    // Download button
                     const dlBtn = document.createElement('button');
                     dlBtn.className = 'download-btn';
                     dlBtn.innerHTML = '<i class="fas fa-download"></i> Download';
@@ -1281,7 +1452,6 @@
                     });
                     actionsDiv.appendChild(dlBtn);
 
-                    // Remove button
                     const rmBtn = document.createElement('button');
                     rmBtn.className = 'remove-btn';
                     rmBtn.innerHTML = '<i class="fas fa-times"></i>';
@@ -1319,9 +1489,6 @@
                 updateDownloadAll();
             }
 
-            // ============================================================
-            // Update Download All button state
-            // ============================================================
             function updateDownloadAll() {
                 const done = files.filter(f => f.status === 'done' && f.convertedBlob);
                 if (done.length > 0) {
@@ -1334,9 +1501,7 @@
                 downloadAllWrap.style.display = files.length > 0 ? 'flex' : 'none';
             }
 
-            // ============================================================
-            // Toast notifications
-            // ============================================================
+            // Toast
             function showToast(message, type) {
                 const old = document.querySelector('.toast-msg');
                 if (old) old.remove();
@@ -1354,11 +1519,7 @@
                 }, 3000);
             }
 
-            // ============================================================
-            // Event listeners
-            // ============================================================
-
-            // File input change
+            // Events
             fileInput.addEventListener('change', function(e) {
                 if (this.files.length) {
                     handleFiles(this.files);
@@ -1366,7 +1527,6 @@
                 }
             });
 
-            // Drag & Drop
             uploadZone.addEventListener('dragover', function(e) {
                 e.preventDefault();
                 this.classList.add('dragover');
@@ -1383,24 +1543,15 @@
                 }
             });
 
-            // Convert All
             convertAllBtn.addEventListener('click', convertAll);
-
-            // Download All
             downloadAllBtn.addEventListener('click', downloadAll);
 
-            // ============================================================
-            // Keyboard shortcut: Escape to clear file input focus
-            // ============================================================
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     fileInput.blur();
                 }
             });
 
-            // ============================================================
-            // Memory cleanup on page unload
-            // ============================================================
             window.addEventListener('beforeunload', function() {
                 files.forEach(entry => {
                     if (entry.webpUrl) URL.revokeObjectURL(entry.webpUrl);
@@ -1408,14 +1559,9 @@
                 });
             });
 
-            // ============================================================
             // Init
-            // ============================================================
             renderFileList();
             updateDownloadAll();
-
-            console.log('🚀 WebP Converter initialized (light theme only).');
-            console.log('📦 ' + files.length + ' files loaded.');
 
         })();
     </script>
